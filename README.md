@@ -17,7 +17,6 @@ color.cmyk = "cmyk 0 50 60 60"
 console.log(color.ral) // {lrv: 5, name: "Red Brown", ral: 8012}
 
 color.rgb = "rgb 10 60 240"
-color.rgb = {r: "10", g: "60", b: "240" }
 console.log(color.ral) // {lrv: 4, name: "Ultramarine Blue", ral: 5002}
 
 console.log(color.hex3) // "03F"
