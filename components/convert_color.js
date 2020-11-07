@@ -130,10 +130,10 @@ const colorConvert = {
 
     grayscale: {
         cmyk: function (grayscale) {
-            return { c: 0, m: 0, y: 0, k: grayscale }
+            return { c: 0, m: 0, y: 0, k: parseInt(grayscale) }
         },
         rgb: function (grayscale) {
-            const g = Math.round((100 - grayscale) / 0.392156862745098)
+            const g = Math.round((100 - parseInt(grayscale)) / 0.392156862745098)
             return { r: g, g: g, b: g }
         }
     },

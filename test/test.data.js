@@ -66,7 +66,7 @@ module.exports = [
     ['nimic', { format: false }],
     ['c: 10 m:20 k:50 y:6', { format: 'cmyk', cmyk: { c: 10, m: 20, k: 50, y: 6 } }],
     ['g: 30', { format: 'grayscale', cmyk: { c: 0, m: 0, k: 30, y: 0 }}],
-    ['rgb 0 255 0', { format: 'rgb', rgb: { r: '0', g: '255', b: '0' }}],
+    ['rgb 0 255 0', { format: 'rgb', rgb: { r: 0, g: 255, b: 0 }}],
     ['rgb(0 255 0)', { invert: { r: 255, g: 0, b: 255 }}], // invert
     ['rgb 60 8 10', { invert: { r: 8, g: 60, b: 58 }}],
     ['rgb 60 8 10', { invert: { r: 8, g: 60, b: 58 }}],
@@ -87,5 +87,7 @@ module.exports = [
     ['80', { analogous: [ 80, 80, 80 ]}],
     ['#801', { tints: [ '801', 'A01',  'D01',  'F01',  'F13',  'F45',  'F67',  'F89',  'FBB',  'FDD',  'FFF' ]}], // tints
     ['#801', { shades: [ '000',    '000',    '100',    '200',    '300',    '400',   '500',    '500',    '600',    '700',    '801' ]}], // shades
-    ['yellow', { complementary: [ 'Blue', 'yellow' ]}], // complementary
+    ['yellow', { complementary: [ 'Blue', 'Yellow' ]}], // complementary
+    ['#801', { complementary: [ '#087', '#801' ]}],
+    ['RaL 5001', { complementary: [ 'RAL 8011', 'RAL 5001' ]}],
 ]

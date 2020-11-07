@@ -39,10 +39,6 @@ class abstractColor {
         }
     }
 
-    procentFix(number) {
-        return number * 100
-    }
-
     exclude(colorVal, colorName) {
         switch (colorName) {
             case "cmyk":

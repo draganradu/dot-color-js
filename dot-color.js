@@ -1,6 +1,8 @@
 'use strict'
+/* eslint-disable */
 const sanitize = require('./components/sanitization')
 const identify = require('./components/identify')
+const compare = require('./components/compere.js')
 const convertColor = require('./components/convert_color')
 const colorScaffolding = require('./components/colorScaffolding')
 
@@ -259,7 +261,12 @@ class objectiveColor {
 
       Object.defineProperty(this, "complementary", {
         get() {
-          return [this.invert, this.sanitizedColor]
+          const a = this.invert.clean
+          const b = this.customColorObject({
+            colorData: this.sanitizedColor,
+            typeOfColor: this.format,
+          }).clean
+          return [a,b]
         },set(input) {
           this.colorExtractor(input);
         },
@@ -294,6 +301,45 @@ class objectiveColor {
         },
       });
     }
+
+    compare (...arrayOfColor) {
+      let _this = []
+      for( const i of arrayOfColor ) {
+        let temp = { raw: i }
+
+        temp.identify = identify(temp.raw)
+        temp.raw = sanitize(temp.raw, temp.identify) 
+
+        temp.rgb = convertColor.convert({
+          from: temp.identify,
+          to: "rgb",
+          color: temp.raw,
+        })
+
+        temp.hex = convertColor.convert({
+          from: "rgb",
+          to: "hex6",
+          color: temp.rgb,
+        })
+
+        temp.compare = compare.init({ c1: temp.rgb , c2: this.rgb })
+
+        _this.push(temp)
+      }
+
+      _this.sort(function(a, b) {
+        if (a.compare < b.compare) { return -1 }
+        if (a.compare > b.compare) { return 1 }
+        return 0;
+      });
+
+      let _simplified = []
+      for( const i of _this ) {
+        _simplified.push(i.raw)
+      }
+
+      return _simplified
+  }
 }
 
 Object.assign(objectiveColor.prototype, colorScaffolding);

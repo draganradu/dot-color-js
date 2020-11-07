@@ -79,6 +79,32 @@ class AbstractColorString extends String {
     }
 }
 
+class AbstractColorStringRAL extends String {
+    constructor(data, colotType) {
+        super(data)
+        if (colotType) {
+            Object.defineProperty(this, "colotType", {
+                enumerable: false,
+                writable: true,
+                value: colotType
+            });
+        }
+    }
+
+    get hex() {
+        return convertColor.convert({
+            from: this.colotType,
+            to: 'hex6',
+            color: this.toString(),
+            pretty: true,
+        })
+    }
+
+    get clean() {
+        return `RAL ${this}`
+    }
+}
+
 class AbstractColorHTML extends AbstractColorString {
     constructor(data, colotType) {
         super(data)
@@ -199,6 +225,8 @@ module.exports = {
                 return new AbstractColorHTML(colorData, typeOfColor)
             } else if (typeOfColor.indexOf('hex') > -1) {
                 return new AbstractColorHex(colorData, typeOfColor)
+            } else if (typeOfColor === 'ral') {
+                return new AbstractColorStringRAL(colorData, typeOfColor)
             }
             return new AbstractColorString(colorData, typeOfColor)
         } else if (typeof colorData === 'number') {

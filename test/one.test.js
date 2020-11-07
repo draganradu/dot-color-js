@@ -2,8 +2,8 @@
 
 const colorAbstract = require('../dot-color')
 
-const color = new colorAbstract('ral 1000')
-console.log(color.analogous) 
+const color = new colorAbstract('cmyk 10 20 50 10')
+console.log(color.compare('cmyk 60 20 50 10', 'cmyk 20 20 50 10', 'cmyk 1 20 50 10')) 
 
 /*
 

@@ -9,7 +9,7 @@ class _this {
         this.statistics = {
             failed: 0,
             successful: 0,
-            timestart: 0,
+            timeStart: 0,
             timeEnd: 0,
 
             get totalTests() {
