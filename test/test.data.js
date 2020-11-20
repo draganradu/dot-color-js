@@ -67,6 +67,8 @@ module.exports = [
     ['c: 10 m:20 k:50 y:6', { format: 'cmyk', cmyk: { c: 10, m: 20, k: 50, y: 6 } }],
     ['g: 30', { format: 'grayscale', cmyk: { c: 0, m: 0, k: 30, y: 0 }}],
     ['rgb 0 255 0', { format: 'rgb', rgb: { r: 0, g: 255, b: 0 }}],
+    ['red', { rgb: { r: 255, g: 0, b: 0 } }], // convert
+    ['pantone 100', { rgb: { r: 246, g:235, b:97 }}],
     ['rgb(0 255 0)', { invert: { r: 255, g: 0, b: 255 }}], // invert
     ['rgb 60 8 10', { invert: { r: 8, g: 60, b: 58 }}],
     ['rgb 60 8 10', { invert: { r: 8, g: 60, b: 58 }}],

@@ -530,7 +530,7 @@ const colorConvert = {
                 }
             } else {
                 // color
-                const d = (_rgb.r === min_rgb) ? _rgb.g - _rgb.b : ((_rgb.b === minRGB) ? _rgb.r - _rgb.g : _rgb.b - _rgb.r)
+                const d = (_rgb.r === minRGB) ? _rgb.g - _rgb.b : ((_rgb.b === minRGB) ? _rgb.r - _rgb.g : _rgb.b - _rgb.r)
                 const h = (_rgb.r === minRGB) ? 3 : ((_rgb.b === minRGB) ? 1 : 5)
                 hsv = {
                     h: 60 * (h - d / (maxRGB - minRGB)),
@@ -623,7 +623,7 @@ const colorConvert = {
                 }
             }
 
-            return helpers.splitCamelCase(html[_this.element].name)
+            return (html[_this.element])? helpers.splitCamelCase(html[_this.element].name): false
         },
 
         xyz: function (rgb) {

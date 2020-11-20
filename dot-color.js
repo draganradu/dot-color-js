@@ -1,5 +1,4 @@
 'use strict'
-/* eslint-disable */
 const sanitize = require('./components/sanitization')
 const identify = require('./components/identify')
 const compare = require('./components/compere.js')
@@ -68,12 +67,26 @@ class objectiveColor {
 
       Object.defineProperty(this, "hex", {
         get() {
-          return this.hex6;
+          return this.hex6.clean;
         },
         set(input) {
           this.colorExtractor(input);
         },
       });
+
+      Object.defineProperty(this, "clean", {
+        get() {
+          if(this.format) {
+            const { format } = this
+            return this[format].clean
+          }
+          return false
+        },
+        set(input) {
+          this.colorExtractor(input);
+        },
+      });
+
 
       // ----------- converts
       Object.defineProperty(this, "invert", {
